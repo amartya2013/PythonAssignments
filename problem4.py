@@ -2,7 +2,6 @@ def is_anagram(s,t):
     list_s = list(s)
     clone_list_s = list_s
     list_t = list(t)
-
     for letter in list_t:
         if letter in list_s:
             clone_list_s.remove(letter)
