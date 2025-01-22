@@ -1,4 +1,4 @@
-def keep_numbers_only(s:str):
+def keep_numbers_only(s: str):
     final_print = ""
     for character in s:
         if character.isnumeric():
@@ -9,4 +9,3 @@ def keep_numbers_only(s:str):
 
 
 print(keep_numbers_only(input("Enter string here:")))
-
