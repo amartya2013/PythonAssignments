@@ -1,6 +1,6 @@
 
-def take_input_and_return_list(string_separated_input):
-    return list(string_separated_input.split(','))
+def take_input_and_return_list(string_separated_input: str) -> list:
+    return string_separated_input.split(',')
 
 
 def take_input_and_return_tuple(string_separated_input):
