@@ -1,13 +1,10 @@
-sample_dict = {'a': 100, 'b': 210, 'c': 300}
+import math
 
 
-def check_for_200(dictionary):
-    list_of_values = dictionary.values()  # Gives a list of all the values in the dictionary
-    for i in list_of_values:
-        if i == 200:
-            print("200 is present in the sample dictionary")
-        else:
-            continue
+def calculate_equation(d: int) -> int:
+    return int(math.sqrt((2 * 50 * d) / 30))
 
 
-check_for_200(sample_dict)
+input_list = list(input("Give me an input list:").split(','))
+final_list = [str(calculate_equation(int(number))) for number in input_list]
+print(','.join(final_list))
