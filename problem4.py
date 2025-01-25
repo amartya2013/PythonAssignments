@@ -1,1 +1,1 @@
-print(input("Enter Sentence: ").upper)
+print(input("Enter Sentence: ").upper())
