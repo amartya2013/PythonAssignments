@@ -12,24 +12,21 @@ with open('students.csv', 'r') as students:
     to_sum = []
     for key in all_marks:
         student_ID = key.split(',')[0]
-        print(student_ID)
         to_sum.append(int(all_marks[key]))
         for checking_key in all_marks:
             if checking_key.startswith(student_ID) and checking_key.split(',')[1] != key.split(',')[1]:
                 to_sum.append(int(all_marks[checking_key]))
-                print(all_marks[checking_key])
-                total_marks[id_to_name.get(student_ID)] = sum(to_sum)
-                highest_marks[id_to_name.get(student_ID)] = max(to_sum)
 
-                print(to_sum)
-                break
 
+        total_marks[id_to_name.get(student_ID)] = sum(to_sum)
+        highest_marks[id_to_name.get(student_ID)] = max(to_sum)
         to_sum = []
 
-        print(to_sum)
 
 
-    print(total_marks)
-    print(highest_marks)
+    print(f"Highest Marks is {highest_marks}")
+    print(f"Total Marks is {total_marks}")
+    name = input("Give me a name")
+    print(f"{name}'s total marks is {total_marks[name]} and their highest marks is {highest_marks.get(name)}")
 
 
