@@ -1,26 +1,35 @@
 import csv
 
-with open('students.csv', 'r') as csv_file:
-    file_reader = csv.DictReader(csv_file)
-    science_marks = {}
-    math_marks = {}
+with open('students.csv', 'r') as students:
+    students_dictionaries = csv.DictReader(students)
+    all_marks = {}
     total_marks = {}
     highest_marks = {}
-    for dictionary in file_reader:
-        if dictionary.get('Subject') == 'Science':
-            science_marks[str(dictionary.get('Student Name'))] = str(dictionary.get('Marks'))
-        if dictionary.get('Subject') == 'Math':
-            math_marks[str(dictionary.get('Student Name'))] = str(dictionary.get('Marks'))
-    for key in math_marks.keys():
-        total_marks[str(key)] = int(math_marks.get(key)) + int(science_marks.get(key))
-        if int(math_marks.get(key)) > int(science_marks.get(key)):
-            highest_marks[str(key)] = math_marks.get(key)
-        else:
-            highest_marks[str(key)] = science_marks.get(key)
-    print(highest_marks)
-    print(total_marks)
-    name = input("Input Me a name:")
-    print(f" {name}'s high score is {highest_marks.get(name)} and {name}'s  total score is {total_marks.get(name)}")
+    id_to_name = {}
+    for dictionary in students_dictionaries:
+        all_marks[f"{dictionary.get('Student ID')},{dictionary.get('Subject')}"] = dictionary.get('Marks')
+        id_to_name[dictionary.get('Student ID')] = dictionary.get('Student Name')
+    to_sum = []
+    for key in all_marks:
+        student_ID = key.split(',')[0]
+        print(student_ID)
+        to_sum.append(int(all_marks[key]))
+        for checking_key in all_marks:
+            if checking_key.startswith(student_ID) and checking_key.split(',')[1] != key.split(',')[1]:
+                to_sum.append(int(all_marks[checking_key]))
+                print(all_marks[checking_key])
+                total_marks[id_to_name.get(student_ID)] = sum(to_sum)
+                highest_marks[id_to_name.get(student_ID)] = max(to_sum)
 
+                print(to_sum)
+                break
+
+        to_sum = []
+
+        print(to_sum)
+
+
+    print(total_marks)
+    print(highest_marks)
 
 
